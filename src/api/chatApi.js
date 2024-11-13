@@ -119,8 +119,13 @@ export const getSessions = async () => {
     const response = await axios.get(GET_SESSIONS_URL, { withCredentials: true });
     return response.data;
   } catch (error) {
-    console.error("Failed to fetch sessions", error.message);
-    return [];
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('isAuthenticated');
+      window.location.reload();
+    } else {
+      console.error("Failed to fetch sessions", error.message);
+      return [];
+    }
   }
 };
 
