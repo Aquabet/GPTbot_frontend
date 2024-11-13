@@ -36,6 +36,13 @@ const ChatApp = ({ onLogout }) => {
     loadSessions();
   }, []);
 
+  // Scroll to the latest message when messages update
+  useEffect(() => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
+    }
+  }, [messages]);
+
   // Toggle language
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "zh" : "en";
