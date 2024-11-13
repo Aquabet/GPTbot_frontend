@@ -6,7 +6,6 @@ import axios from "axios";
 import "./styles/App.css";
 
 const App = () => {
-
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated") === "true"
   );
@@ -32,7 +31,8 @@ const App = () => {
         await axios.get("/api/gpt", { withCredentials: true });
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          handleLogout();
+          setIsAuthenticated(false);
+          localStorage.removeItem("isAuthenticated");
         }
       }
     };
@@ -40,7 +40,7 @@ const App = () => {
     if (isAuthenticated) {
       checkAuthStatus();
     }
-  }, [isAuthenticated, handleLogout]);
+  }, [isAuthenticated]);
 
   return (
     <div>
