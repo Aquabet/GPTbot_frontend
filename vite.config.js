@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     build: {
       outDir: env.VITE_BUILD_OUT_DIR || 'dist',
+      emptyOutDir: true,
     },
   };
 });
