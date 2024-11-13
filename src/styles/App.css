@@ -1,19 +1,33 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #f4f6f8;
   color: #333;
-  height: 100vh;
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
 .toggle-language {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5vh;
+  height: 2.5rem;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #10a37f;
+  color: #fff;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-language:hover {
+  background-color: #0e8d6c;
 }

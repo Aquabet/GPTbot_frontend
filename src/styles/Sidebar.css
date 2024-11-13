@@ -4,15 +4,22 @@
     display: flex;
     flex-direction: column;
     color: #ffffff;
-}
-
-.sidebar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(0);
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar-header {
     padding: 15px;
     background-color: #292b2f;
     border-bottom: 1px solid #343541;
-}
-
-.new-session-btn {
+  }
+  
+  .new-session-btn {
     width: 100%;
     padding: 10px;
     background-color: #10a37f;
@@ -21,57 +28,93 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-}
-
-.new-session-btn:hover {
+  }
+  
+  .new-session-btn:hover {
     background-color: #0e8d6c;
-}
-
-.session-list {
+  }
+  
+  .session-list {
     flex: 1;
     overflow-y: auto;
-}
-
-.session-item {
+    padding: 10px;
+  }
+  
+  .session-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     cursor: pointer;
     color: #cfcfcf;
-}
-
-.session-item input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-    font-size: 14px;
-}
-
-.session-item:hover {
-    background-color: #343541;
-}
-
-.session-item.active {
+    border-radius: 4px;
+  }
+  
+  .session-item.active {
     background-color: #3c3f4a;
     color: #ffffff;
-}
-
-.session-actions {
-    display: inline-flex;
-    gap: 5px;
-    margin-left: 10px;
-}
-
-.rename-btn,
-.delete-btn {
+  }
+  
+  .rename-btn,
+  .delete-btn {
     background: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
-}
-
-.rename-btn:hover,
-.delete-btn:hover {
+  }
+  
+  .rename-btn:hover,
+  .delete-btn:hover {
     color: #007bff;
-}
+  }
+  
+  .app-content {
+    margin-left: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  
+    .sidebar-toggle-btn {
+      display: flex;
+    }
+  
+    .app-content {
+      margin-left: 0;
+    }
+  }
+  
+  .sidebar-toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #10a37f;
+    color: #ffffff;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    font-size: 24px;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar-toggle-btn {
+      display: flex;
+    }
+  }
+  
