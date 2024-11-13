@@ -1,0 +1,21 @@
+{
+    "title": "ChatGPT Application",
+    "login": "Login",
+    "logout": "Logout",
+    "send": "Send",
+    "clear": "Delete Session",
+    "username": "Username",
+    "password": "Password",
+    "thinking": "Thinking...",
+    "login_success": "Login Successful",
+    "login_error": "Username or password incorrect",
+    "message_placeholder": "Type your message...",
+
+    "loginError": "Failed to login",
+    "logoutError": "Failed to logout",
+    "validateError": "Failed to validate",
+    "fetchChatError": "Error occurred: {{error}}",
+    "logoutMessage": "You have been logged out",
+    "loginRateLimitError":"Too many login attempts. Please wait and try again later."
+  }
+  

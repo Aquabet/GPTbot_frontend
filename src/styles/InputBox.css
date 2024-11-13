@@ -1,0 +1,44 @@
+.inputbox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inputbox input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+.inputbox-input::placeholder {
+  color: #cccccc;
+}
+
+.inputbox input:focus {
+  border-color: #457b9d;
+}
+
+.inputbox button {
+  background-color: #2a9d8f;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inputbox button:hover {
+  background-color: #1b6f5f;
+}
