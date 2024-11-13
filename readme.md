@@ -7,6 +7,7 @@ This repository is a frontend application for a third-party ChatGPT client. It r
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
+  - [Demo](#demo)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Environment Variables](#environment-variables)
@@ -29,7 +30,6 @@ This repository is a frontend application for a third-party ChatGPT client. It r
 - **React.js**: Used to build the user interface.
 - **Axios**: For making HTTP requests to the backend API.
 - **i18next**: For internationalization and language translation.
-- **CSS Modules**: To style components in a modular and reusable way.
 
 ## Getting Started
 
