@@ -1,28 +1,39 @@
+/* SessionList.css */
+
 .session-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .session-list h3 {
-    margin: 0;
-    font-size: 16px;
-  }
-  
-  .session-list-controls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .session-select {
-    padding: 5px;
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  .create-session-button, .delete-session-button {
-    padding: 5px 10px;
-  }
-  
+  padding: 1rem;
+  color: #fff;
+}
+
+.session-list h3 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.session-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.session-select {
+  background-color: #3f3f3f;
+  color: #fff;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.create-session-button,
+.delete-session-button {
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}

@@ -16,14 +16,30 @@ const InputBox = ({ onSendMessage }) => {
     }
   };
 
+  // Handle key press: Enter sends message, Shift + Enter creates a new line
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if (e.shiftKey) {
+        // Shift + Enter -> Insert newline
+        e.preventDefault();
+        setInput((prev) => prev + "\n");
+      } else {
+        // Enter (without Shift) -> Send message
+        e.preventDefault();
+        handleSend();
+      }
+    }
+  };
+
   return (
     <div className="inputbox">
-      <input
-        type="text"
+      <textarea
+        className="message-input"
         placeholder={t("message_placeholder")} // Placeholder text for localization
         value={input}
         onChange={(e) => setInput(e.target.value)} // Update input value on change
-        onKeyDown={(e) => e.key === "Enter" && handleSend()} // Send message on Enter key
+        onKeyDown={handleKeyDown} // Handle Enter and Shift+Enter
+        rows={2} // Default height
       />
       <ButtonWidget onClick={handleSend}>{t("send")}</ButtonWidget>
     </div>

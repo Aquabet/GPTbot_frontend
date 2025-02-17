@@ -16,6 +16,10 @@
     "validateError": "Failed to validate",
     "fetchChatError": "Error occurred: {{error}}",
     "logoutMessage": "You have been logged out",
-    "loginRateLimitError":"Too many login attempts. Please wait and try again later."
+    "loginRateLimitError":"Too many login attempts. Please wait and try again later.",
+
+    "assistant_typing": "Assistant is typing...",
+
+    "new_session": "New Chat"
   }
   

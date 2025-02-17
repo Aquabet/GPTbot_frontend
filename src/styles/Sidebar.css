@@ -1,120 +1,131 @@
+/* Sidebar.css */
+
+/* Button for toggling the sidebar (hamburger or close icon) */
+.sidebar-toggle-btn {
+  display: none;
+}
+
+/* Sidebar container (closed by default) */
 .sidebar {
-    width: 250px;
-    background-color: #202123;
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
+  width: 260px;
+  height: 100vh;
+  background-color: #2a2a2a;
+  color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  border-right: 1px solid #333;
+}
+
+/* Header inside sidebar (e.g., "New Chat" button) */
+.sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid #444;
+}
+
+/* "New Chat" button at the top of the sidebar */
+.new-session-btn {
+  background-color: #444;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* List of sessions */
+.session-list {
+  padding: 0.5rem 1rem;
+}
+
+/* Each session item */
+.session-item {
+  padding: 0.6rem 0.4rem;
+  margin-bottom: 0.3rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Highlight active session */
+.session-item.active {
+  background-color: #3f3f3f;
+}
+
+/* Container for rename/delete buttons */
+.session-actions {
+  float: right;
+}
+
+/* Rename & delete icons */
+.rename-btn,
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    position: relative;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle-btn {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .overlay {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    transform: translateX(0);
-    z-index: 1000;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .sidebar-header {
-    padding: 15px;
-    background-color: #292b2f;
-    border-bottom: 1px solid #343541;
-  }
-  
-  .new-session-btn {
     width: 100%;
-    padding: 10px;
-    background-color: #10a37f;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .new-session-btn:hover {
-    background-color: #0e8d6c;
-  }
-  
-  .session-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-  }
-  
-  .session-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    color: #cfcfcf;
-    border-radius: 4px;
-  }
-  
-  .session-item.active {
-    background-color: #3c3f4a;
-    color: #ffffff;
-  }
-  
-  .rename-btn,
-  .delete-btn {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .rename-btn:hover,
-  .delete-btn:hover {
-    color: #007bff;
-  }
-  
-  .app-content {
-    margin-left: 250px;
-    padding: 20px;
-    box-sizing: border-box;
-    transition: margin-left 0.3s ease-in-out;
-  }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      transform: translateX(-100%);
-    }
-  
-    .sidebar.active {
-      transform: translateX(0);
-    }
-  
-    .sidebar-toggle-btn {
-      display: flex;
-    }
-  
-    .app-content {
-      margin-left: 0;
-    }
-  }
-  
-  .sidebar-toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #10a37f;
-    color: #ffffff;
-    border-radius: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
     display: none;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    border: none;
-    cursor: pointer;
-    z-index: 1100;
-    font-size: 24px;
   }
-  
-  @media (max-width: 768px) {
-    .sidebar-toggle-btn {
-      display: flex;
-    }
+
+  .sidebar.active~.sidebar-toggle-btn {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
   }
-  
+
+  .sidebar.active~.overlay {
+    display: block;
+  }
+
+  .sidebar.active~.chat-window {
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+  }
+}

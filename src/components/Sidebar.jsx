@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { MenuOutlined } from "@ant-design/icons";
 import "../styles/Sidebar.css";
+import { useTranslation } from "react-i18next";
+
 
 const Sidebar = ({
   sessions,
@@ -10,29 +13,39 @@ const Sidebar = ({
   onDeleteSession,
   onRenameSession,
 }) => {
+  const { t } = useTranslation();
   const [renamingSessionId, setRenamingSessionId] = useState(null);
   const [newSessionName, setNewSessionName] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsSidebarOpen(true);
+        setIsMobile(false);
+      } else {
+        setIsSidebarOpen(false);
+        setIsMobile(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        isSidebarOpen &&
-        !event.target.closest(".sidebar") &&
-        !event.target.closest(".sidebar-toggle-btn")
-      ) {
+      if (isMobile && isSidebarOpen && !event.target.closest(".sidebar")) {
         setIsSidebarOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, [isSidebarOpen]);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMobile, isSidebarOpen]);
 
   const handleRenameSubmit = async (e) => {
     e.preventDefault();
@@ -49,21 +62,30 @@ const Sidebar = ({
     setNewSessionName("");
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
     <>
-      {!isSidebarOpen && (
+      {isMobile && !isSidebarOpen && (
         <button
           className="sidebar-toggle-btn"
-          onClick={() => setIsSidebarOpen(true)}
-          title="Toggle Sidebar"
+          onClick={toggleSidebar}
+          title="Open Sidebar"
         >
-          ☰
+          <MenuOutlined />
         </button>
       )}
+
+      {isMobile && isSidebarOpen && (
+        <div className="overlay" onClick={toggleSidebar}></div>
+      )}
+
       <div className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
         <div className="sidebar-header">
           <button className="new-session-btn" onClick={onCreateSession}>
-            + New Chat
+            + {t("new_session")}
           </button>
         </div>
         <div className="session-list">
@@ -75,7 +97,7 @@ const Sidebar = ({
               }`}
               onClick={() => {
                 onSelectSession(session.sessionId);
-                setIsSidebarOpen(false);
+                if (isMobile) setIsSidebarOpen(false);
               }}
             >
               {session.sessionId === renamingSessionId ? (

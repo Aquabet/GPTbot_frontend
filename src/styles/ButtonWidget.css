@@ -1,27 +1,21 @@
+/* ButtonWidget.css */
+
 .button-widget {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.625rem 1.25rem;
-  font-size: 1rem;
-  border-radius: 0.3125rem;
+  background-color: #007acc;
+  color: #fff;
   border: none;
-  background-color: #007bff;
-  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease;
+  font-size: 0.95rem;
 }
 
 .button-widget:hover {
-  background-color: #0056b3;
-}
-
-.button-widget:active {
-  transform: scale(0.98);
+  background-color: #0061a8;
 }
 
 .button-widget:disabled {
   cursor: not-allowed;
   opacity: 0.6;
-  background-color: #007bff;
 }

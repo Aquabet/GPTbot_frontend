@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config/apiConfig';
 import i18n from '../i18n';
 
 const { t } = i18n;
@@ -53,7 +53,8 @@ export const validateToken = async () => {
 };
 
 // Send a message and fetch the assistant's response
-export const fetchChatResponse = async (userMessage, sessionId, onLogout) => {
+export const fetchChatResponse = async (userMessage, sessionId, onLogout, modelProvider = "openai", modelName = "gpt-4-turbo") => {
+  console.log(modelProvider, modelName);
   try {
     if (!sessionId) {
       const newSession = await createSession();
@@ -62,7 +63,12 @@ export const fetchChatResponse = async (userMessage, sessionId, onLogout) => {
 
     const response = await axios.post(
       CHAT_MESSAGE_URL,
-      { content: userMessage.content, sessionId },
+      {
+        content: userMessage.content,
+        sessionId,
+        modelProvider,
+        modelName,
+      },
       {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },

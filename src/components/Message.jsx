@@ -1,3 +1,4 @@
+// message.jsx
 import PropTypes from "prop-types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -8,9 +9,15 @@ import { CopyOutlined } from "@ant-design/icons";
 
 const CodeBlock = ({ value, language }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(value).then(() => {
-      alert("Code copied to clipboard!");
-    });
+    navigator.clipboard
+      .writeText(value)
+      .then(() => {
+        alert("Code copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy code: ", error);
+        alert("Failed to copy code.");
+      });
   };
 
   return (

@@ -1,9 +1,15 @@
+/* MessageList.css */
+
 .message-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    overflow-y: auto;
-    max-height: calc(100vh - 200px);
-    padding: 10px;
-    box-sizing: border-box;
-}
+    gap: 1rem;
+    /* The parent .chat-box has padding, so we don't need extra padding here */
+  }
+  
+  .loading {
+    text-align: center;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+  

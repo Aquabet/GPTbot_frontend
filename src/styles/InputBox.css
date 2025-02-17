@@ -1,44 +1,73 @@
+/* InputBox.css */
 .inputbox {
   display: flex;
-  width: 100%;
   align-items: center;
-  background-color: #ffffff;
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #2a2a2a;
+  border-top: 1px solid #333;
 }
 
-.inputbox input {
-  flex-grow: 1;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  outline: none;
-  margin-right: 10px;
-  transition: border-color 0.3s;
-}
-
-.inputbox-input::placeholder {
-  color: #cccccc;
-}
-
-.inputbox input:focus {
-  border-color: #457b9d;
-}
-
-.inputbox button {
-  background-color: #2a9d8f;
+/* 多行文本输入框 */
+.message-input {
+  flex: 1;
+  background-color: #3f3f3f;
   color: #fff;
-  padding: 10px 20px;
-  font-weight: bold;
-  font-size: 14px;
   border: none;
-  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: none; /* 禁止用户手动调整大小 */
+  overflow-y: auto; /* 允许自动滚动 */
+  min-height: 60px;
+  max-height: 200px; /* 限制最大高度 */
+  line-height: 1.5;
+}
+
+/* 聚焦状态，添加边框高亮 */
+.message-input:focus {
+  outline: none;
+  border: 1px solid #007acc;
+}
+
+/* 按钮样式 */
+.inputbox button {
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1rem;
+  margin-left: 0.8rem;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .inputbox button:hover {
-  background-color: #1b6f5f;
+  background-color: #005fa3;
+}
+
+/* 滚动条样式优化 */
+.message-input::-webkit-scrollbar {
+  width: 8px;
+}
+
+.message-input::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 6px;
+}
+
+.message-input::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 6px;
+}
+
+.message-input::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Firefox 滚动条颜色 */
+.message-input {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #2a2a2a;
 }
